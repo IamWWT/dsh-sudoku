@@ -101,3 +101,5 @@ node test/ui-verify.mjs 3084 <token>   # headless UI 验证（需 3084 临时实
 本项目遵循 [DeepSeek 共用目录约定](../dsh-agent-presets/docs/DIRECTORY-LAYOUT.md)。管理根统一写作 `<DEEPSEEK_ROOT>`（`.../deepseek/`）。
 Bash 与 `systemctl` 命令只适用于 `ubuntu-4090`（源码树 + systemd，3082）；`windows-lite` 用源码树 + dsh-dev 方式手动启动（无 systemd），
 配置文件中的路径须在本机解析。工作区级文档在 `dsh-plugins/docs/` 与 `dsh-plugins/` 根 md。
+
+本轮体验优化版本：0.1.4。范围与验证见 [体验优化规格](docs/specs/20260925-experience/spec.md)。

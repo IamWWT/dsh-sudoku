@@ -15,7 +15,7 @@ export const name = "sudoku";
 export const inject = [] as string[];
 
 /** 五处同步之一（package.json / 构建门禁 / README / ui.ts 徽章 / 本文件）。 */
-export const VERSION = "0.1.3";
+export const VERSION = "0.1.4";
 
 export function apply(_ctx: unknown, _config?: Record<string, unknown>): void {
   /* v0.1 空壳：无操作。 */

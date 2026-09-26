@@ -107,7 +107,7 @@ check(
 );
 check("client: 未打包 React 运行时", !clientSrc.includes("ReactCurrentOwner"));
 check("client: 使用主题 token 而非硬编码色值", clientSrc.includes("--dsw-alias-") && !/#[0-9a-fA-F]{6}\b/.test(clientSrc));
-check("client: 含版本徽章字面量", clientSrc.includes("dsh-sudoku v0.1.3"));
+check("client: 含版本徽章字面量", clientSrc.includes(`dsh-sudoku v${pkg.version}`));
 check("client: 含铅笔笔记开关", clientSrc.includes("铅笔"));
 check("client: 含首填安全提示", clientSrc.includes("首填安全"));
 check("client: 成绩走 localStorage（v0.1）", clientSrc.includes("localStorage") && clientSrc.includes("dsh-sudoku/v1/"));

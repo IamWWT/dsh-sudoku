@@ -1,3 +1,7 @@
+## 0.1.4 — 2026-09-25
+
+改进插件页面布局、窄容器适配与键盘焦点；具体范围和验证见 docs/specs/20260925-experience/。
+
 # Changelog — dsh-sudoku
 
 > 仓库归属：`IamWWT/dsh-plugins`（private monorepo，2026-09-26 起全部自研代码的唯一仓）；

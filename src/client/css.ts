@@ -249,4 +249,14 @@ export const CSS_TEXT = `
 }
 .sdk-winlayer h2{ margin:0; font-size:18px; color:var(--dsw-alias-label-primary); }
 .sdk-winlayer p{ margin:0; font-size:13px; color:var(--dsw-alias-label-secondary); }
+
+/* Responsive, keyboard-accessible workspace surfaces. */
+
+.sdk-root {min-width:0; gap:14px; padding:16px; line-height:1.5;}
+.sdk-root *, .sdk-root *::before, .sdk-root *::after {box-sizing:border-box;}
+.sdk-root :is(button,input,select):focus-visible {outline:2px solid var(--dsw-alias-link); outline-offset:2px;}
+.sdk-root :is(select,input) {max-width:100%; min-width:0; min-height:34px;}
+.sdk-root .sdk-btn {min-height:34px;}
+@media(prefers-reduced-motion:reduce) {.sdk-root * {animation:none;transition:none;}}
+
 `;

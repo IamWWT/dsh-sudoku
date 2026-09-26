@@ -380,7 +380,7 @@ export function createSudokuUI(R: any): SudokuUI {
         "div",
         { className: "sdk-title" },
         h("h1", null, "🧩 数独"),
-        h("span", { className: "sdk-badge" }, "dsh-sudoku v0.1.3"),
+        h("span", { className: "sdk-badge" }, "dsh-sudoku v0.1.4"),
         /* v0.1.2：全屏切换（C5） */
         h(
           "button",

@@ -39,7 +39,7 @@ window.__ModuleLoader__?.load({
     // client 侧 ctx 依赖：slots（标签主体）+ sidebarRightTabs（标签类型）。
     // v0.1 无 settingsScope（无设置卡片）。
     pluginExports.inject = ["slots", "sidebarRightTabs"];
-    pluginExports.VERSION = "0.1.3";
+    pluginExports.VERSION = "0.1.4";
 
     pluginExports.apply = function apply(ctx: any): void {
       const get = (k: string) => (ctx && typeof ctx.get === "function" ? ctx.get(k) : undefined);
