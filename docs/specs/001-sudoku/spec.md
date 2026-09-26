@@ -1,6 +1,6 @@
 # Spec 001 — dsh-sudoku（DSH 右侧栏数独）
 
-- 状态：v0.1.1 已实现（本地 3084 验证全绿；3082 安装待用户确认）
+- 状态：v0.1.3 已交付（3084 本地验证全绿；3082 已安装并经用户实机验收）
 - 日期：2026-09-14
 - 上游需求：`docs/00-request/request.md`（七问澄清，全部按推荐项确认）
 
@@ -44,7 +44,7 @@ React 由宿主 `window.__ModuleLoader__` 注入，成绩只存浏览器 localSt
 | A2 | 引擎单测全绿（生成合法性/唯一解/对称性/挖洞区间/首填安全/笔记联动/撤销/提示/胜负/难度表/批量性能） | ✅ | `test/engine-test.mjs` 79 项全部通过 |
 | A3 | 产物冒烟（host 动态导入断言 / client 注册面断言 / CSS token 断言） | ✅ | `test/smoke-test.mjs` 23 项全部通过 |
 | A4 | 临时实例（3084，独立 DSH_HOME）真实 harness 加载 + UI 交互截图 | ✅ | `test/ui-verify.mjs`：`#sdk-style` 注入、右侧栏「数独」入口、81 格渲染、填格/笔记/撤销/提示/新一局/切难度全链路（`docs/screenshots/` 12 张，v0.1.1 已复跑）；唯一 console 404 为宿主 open-in-app 图标，与本插件无关 |
-| A5 | 3082 主力环境 link 安装 + `verify-installed.mjs`（须用户显式同意；装后由用户自行 `systemctl --user restart dsh-dev-web`） | ✅装/⏸验收 | 2026-09-14 用户确认后 `bash scripts/install-to-dsh.sh`：link 安装 + 12 项安装后验证全过；重启 3082 + 页面点入「数独」标签由用户执行验收 |
+| A5 | 3082 主力环境安装 + `verify-installed.mjs`（须用户显式同意；装后由用户自行 `systemctl --user restart dsh-dev-web`） | ✅装/⏸验收 | 2026-09-14 用户确认后 `bash scripts/install-to-dsh.sh`：安装 + 12 项安装后验证全过；重启 3082 + 页面点入「数独」标签由用户执行验收（现行安装纪律为 tgz，见 README 安装节） |
 | A6 | 明暗主题无硬编码色（全量 `--dsw-alias-*`/`--dsw-elevation-*` token，6 位 hex 门禁） | ✅ | 构建门禁每轮扫描 |
 | A7 | （v0.1.1）面板顶部有「玩法简介」可折叠区，默认展开，含目标/选格/铅笔/撤销/提示/新一局说明 | ✅ | 3084 复验：`.sdk-help` 存在、初始展开、折叠→true→再展开→true（`ui-verify` 日志 + `04b-help.png`） |
 | A8 | （v0.1.1）难度为 `<select>` 下拉，选项文案「档位 · N 提示」，切换即时生效且当前档位常显 | ✅ | 3084 复验：`selectOption("expert")` 后 `value=expert`，`newGame` 补 `re()` 后即时刷新（`10-expert.png`） |

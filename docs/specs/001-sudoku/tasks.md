@@ -11,7 +11,7 @@
 | T5 | client：entry 注册 / ui.ts 全功能 / css token | ✅ | guide order=42；`sdk-*` 类；无 6 位 hex |
 | T6 | 产物冒烟 + 双端 typecheck | ✅ | `test/smoke-test.mjs` 23 项；`scripts/build.mjs` 绿 |
 | T7 | 临时实例（3084）安装 + UI 验证 + 截图 | ✅ | v0.1.0 全链路 + v0.1.1/v0.1.2 复验（`docs/screenshots/`）；test-home 手工播种 workspace（TROUBLESHOOTING §3） |
-| T8 | 3082 link 安装 + `verify-installed.mjs` | ✅（装）/⏸（用户验收） | 2026-09-14 用户确认后 `install-to-dsh.sh`：12/12 验证过；link 安装 → v0.1.2 客户端改动刷新页面即生效 |
+| T8 | 3082 安装 + `verify-installed.mjs` | ✅（装）/⏸（用户验收） | 2026-09-14 用户确认后 `install-to-dsh.sh`：12/12 验证过（现行安装纪律为 tgz：`npm pack` → `plugin add <tgz>`，重打包须升版本号，装后重启服务） |
 | T9 | 文档补齐（request/spec/tasks/REQUIREMENTS/PROGRESS/README/CHANGELOG/TROUBLESHOOTING） | ✅ | 随 v0.1 交付；v0.1.1/v0.1.2 变更已同步 |
 | T10 | 根 `progress.md` 增加 dsh-sudoku 条目 | ✅ | 2026-09-14 已更新（v0.1.2 行已回写） |
 | T11 | （v0.1.1）难度改 `<select>` 下拉（C2/A8） | ✅ | `ui.ts` `.sdk-diff-select` + `onChange→newGame`；验证 `value=expert` |
@@ -23,7 +23,7 @@
 | T17 | （v0.1.2 C6/C7）用户填数=link 色；竖线=品牌淡染/横线=link 淡染（宫线同向加宽） | ✅ | `css.ts` `color-mix` 分色（`sdk-c2`/`sdk-r2` 加宽同色）；截图 04d/05c 可辨 |
 | T18 | （v0.1.2 C10）棋盘四侧数字键盘（上下横排/左右竖排各 1–9，四边四色） | ✅ | `.sdk-boardzone` 3×3 grid 布局 + 上品牌/右 link/下绿/左琥珀 `color-mix` 淡染；ui-verify 四侧键数各 9 ✓ |
 | T19 | （v0.1.2 C9）成绩行字面 `<b>` 乱码修复（改 `h("b")` 元素） | ✅ | ui-verify `stats 字面量 <b> 残留: 无 ✓` |
-| T20 | （v0.1.2）版本五处同步 0.1.2 + 构建/引擎/冒烟/3084 全链路复验 | ✅ | build 门禁绿、engine 79 ✓、smoke 23 ✓、ui-verify 全绿（截图 12 张）；3082 用户刷新页面即得新版 |
+| T20 | （v0.1.2）版本五处同步 0.1.2 + 构建/引擎/冒烟/3084 全链路复验 | ✅ | build 门禁绿、engine 79 ✓、smoke 23 ✓、ui-verify 全绿（截图 12 张） |
 
 ## v0.2 候选（未排期）
 

@@ -36,7 +36,7 @@
 | A2 引擎单测 | ✅ | `node test/engine-test.mjs` → 79 项全部通过（生成合法性/唯一解/对称/首填安全/笔记/撤销/提示/胜负/难度/30 盘性能） |
 | A3 产物冒烟 | ✅ | `node test/smoke-test.mjs` → 23 项全部通过（host 导出 / client 注册面 / 无第二份 React / 无 6 位 hex） |
 | A4 临时实例（3084）真实加载 + UI 验证 | ✅ | `test/ui-verify.mjs`：`#sdk-style` 注入、右侧栏「数独」入口、81 格渲染、填格/笔记/撤销/提示/新一局/切难度全链路（`docs/screenshots/`）；唯一 404 为宿主 open-in-app 图标 |
-| A5 3082 主力安装 | ✅装/⏸验收 | 2026-09-14 用户确认 → `bash scripts/install-to-dsh.sh`：link 安装 + 12 项安装后验证全过；用户 `systemctl --user restart dsh-dev-web` + 刷新 3082 点「数独」标签验收 |
+| A5 3082 主力安装 | ✅装/⏸验收 | 2026-09-14 用户确认 → `bash scripts/install-to-dsh.sh`：安装 + 12 项安装后验证全过；用户 `systemctl --user restart dsh-dev-web` + 刷新 3082 点「数独」标签验收（现行安装纪律为 tgz，见 README 安装节） |
 | A6 无硬编码色 | ✅ | 构建门禁每轮扫描产物，6 位 hex 即失败 |
 | A7（v0.1.1）玩法简介区 | ✅ | 3084 复验：`.sdk-help` 存在、默认展开、折叠/再展开正常（`04b-help.png`） |
 | A8（v0.1.1）难度下拉 + 常显当前档位 | ✅ | 3084 复验：`selectOption("expert")` → `value=expert`（`10-expert.png`） |

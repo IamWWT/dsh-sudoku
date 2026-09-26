@@ -69,4 +69,7 @@
 ## 验证环境约定
 
 - 3084 临时实例：主 harness checkout 启动 + 独立 `DSH_HOME`（本目录 `test-home/`），绝不用 3082。
-- 3082 安装 = 用户显式同意后的 link 安装 + 用户自行 `systemctl --user restart dsh-dev-web`。
+- 3082 安装 = 用户显式同意后的 **tgz 安装**（`npm pack` → `dsh-dev plugin --profile web add <tgz>`；
+  重打包必须升版本号）+ 用户自行 `systemctl --user restart dsh-dev-web`。
+- 双环境（`ubuntu-4090` / `windows-lite`）支持度见 README「环境支持矩阵」与
+  `../../docs/ENV-COMPATIBILITY.md` §3。

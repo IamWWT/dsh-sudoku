@@ -1,5 +1,9 @@
 # Changelog — dsh-sudoku
 
+> 仓库归属：`IamWWT/dsh-plugins`（private monorepo，2026-09-26 起全部自研代码的唯一仓）；
+> 分支模型 `main`（集成）/ `ubuntu`（agent 开发）/ `windows`（用户）。
+> 安装一律 tgz（`npm pack` → `dsh-dev plugin --profile web add <tgz>`，重打包必须升版本号）。
+
 ## v0.1.3（2026-09-24）
 
 跨平台构建（Windows / Ubuntu 两端同一份源码，均可 `npm run check`）：
@@ -20,7 +24,8 @@
   「五处同步」实际只覆盖了四处。
 
 > 引擎与 79 项单测不变；`npm run check`（产物门禁 + 双 tsconfig 类型检查 + 引擎 79/79 + 冒烟 23/23）全绿。
-> 3082 为 link 安装：用户**刷新页面**即得新版，无需重启服务。
+> 安装按 monorepo 统一纪律走 **tgz**（`npm run check` → `npm pack` → `dsh-dev plugin --profile web add <tgz>`；重打包必须升版本号），
+> 装后需重启 3082（`systemctl --user restart dsh-dev-web`）再刷新页面。
 
 ## v0.1.2（2026-09-14）
 

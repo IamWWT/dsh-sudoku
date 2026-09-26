@@ -23,17 +23,34 @@ DSH（DeepSeek Harness）右侧栏里的经典数独。纯客户端实现：零�
 - **方向高亮（v0.1.1）**：选中格后，行 = 品牌色淡染 / 列 = 链接色淡染 / 宫 = 中性淡染，三种方向视觉可辨、柔和不刺眼（`color-mix` 8–12%，明暗主题自适应）；同格冲突红标优先。
 - **版本徽章**：面板底部 `dsh-sudoku v0.1.3`。
 
-## 安装（dev 环境 3082）
+## 安装
+
+一律 **tgz 安装**（2026-09-23 起，无 link 安装；每次重打包必须升版本号）：
 
 ```bash
 cd dsh-plugins/dsh-sudoku
-bash scripts/install-to-dsh.sh          # 构建→冒烟→link 安装→验证（不重启服务）
+npm run check && npm pack               # 构建 + 门禁 + 测试 → 产出 dsh-sudoku-<ver>.tgz
+dsh-dev plugin --profile web add /abs/path/to/dsh-sudoku-<ver>.tgz
 systemctl --user restart dsh-dev-web    # 需要时由用户手动重启 3082
 ```
+
+`bash scripts/install-to-dsh.sh` 是一键封装：构建 → 冒烟 → 移除旧安装 → 装入 profile → 安装后验证
+（**不重启服务**）。该脚本当前装入的是**源码目录**；按 monorepo 统一纪律应改为 tgz 装入（见 gaps / `docs/PROGRESS.md`）。
 
 刷新 `http://127.0.0.1:3082` → 会话内展开**右侧栏**（会话头部开关）→ 右侧栏指南/标签里点「🧩 数独」。
 
 > 标签**不会**随页面自动打开（设计决策 D2）：需要时经右侧栏指南/标签点入。
+
+## 环境支持矩阵（2026-09-26 双环境约定，总约定见 [`../docs/ENV-COMPATIBILITY.md`](../docs/ENV-COMPATIBILITY.md)）
+
+| 环境 | 支持度 | 说明 |
+|---|---|---|
+| `ubuntu-4090`（本机） | **全量** | 源码树 + systemd（3082）；`npm run check` 全绿，3084 临时实例实测通过 |
+| `windows-lite`（远程笔记本） | **全量** | 源码树 + dsh-dev 方式（手动启动）；纯客户端零运行时依赖，无 OS 分支、无本地模型/数据库依赖，`npm run check` 可直接跑 |
+
+- 本插件的双环境一致性来自「**零环境依赖**」：host 侧为空壳（`inject=[]`、`apply` 无操作），
+  游戏逻辑全在浏览器执行，成绩存 `localStorage`——不触碰 MySQL/SQLite、Python/venv、本地模型服务。
+- 构建脚本跨平台（`scripts/paths.mjs`/`paths.sh` 统一解析路径，动态导入走文件 URL，类型检查经当前 Node 执行）。
 
 ## 开发
 
@@ -68,6 +85,11 @@ node test/ui-verify.mjs 3084 <token>   # headless UI 验证（需 3084 临时实
 
 > v0.2 候选：自定义尺寸/提示数、host 侧成绩文件持久化、每日挑战、分享棋谱。
 
+## 仓库与分支
+
+唯一代码仓库 = `IamWWT/dsh-plugins`（private monorepo，2026-09-26 起全部自研代码的唯一仓）。
+分支模型：`main`（集成）/ `ubuntu`（agent 开发）/ `windows`（用户）。
+
 ## Windows / Ubuntu 本地构建
 
 两端都先运行 `npm install`，再运行 `npm run check`。构建工具和 Node 类型由本包声明，类型检查通过当前 Node 启动，文件导入使用文件 URL，支持 Windows 盘符。运行时仍由 DSH 提供共享服务。
@@ -76,4 +98,6 @@ node test/ui-verify.mjs 3084 <token>   # headless UI 验证（需 3084 临时实
 
 ## Windows / Ubuntu 共用目录
 
-本项目遵循 [DeepSeek 共用目录约定](../dsh-agent-presets/docs/DIRECTORY-LAYOUT.md)。管理根统一写作 `<DEEPSEEK_ROOT>`（`.../deepseek/`），历史部署记录不能视为当前机器状态；Bash/systemd 命令只适用于对应环境，配置文件中的路径须在本机解析。
+本项目遵循 [DeepSeek 共用目录约定](../dsh-agent-presets/docs/DIRECTORY-LAYOUT.md)。管理根统一写作 `<DEEPSEEK_ROOT>`（`.../deepseek/`）。
+Bash 与 `systemctl` 命令只适用于 `ubuntu-4090`（源码树 + systemd，3082）；`windows-lite` 用源码树 + dsh-dev 方式手动启动（无 systemd），
+配置文件中的路径须在本机解析。工作区级文档在 `dsh-plugins/docs/` 与 `dsh-plugins/` 根 md。
