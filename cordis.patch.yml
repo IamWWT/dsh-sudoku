@@ -1,0 +1,7 @@
+# dsh-sudoku bundle patch
+#
+# v0.1 无任何可配置项：游戏逻辑 100% 客户端（引擎跑在浏览器、成绩存 localStorage），
+# host 侧 v0.1 为壳（inject=[]/apply 无操作）→ 按「只声明代码实际消费的键」原则，不声明 config。
+- insert:
+  - id: sudoku
+    name: dsh-sudoku
