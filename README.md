@@ -50,7 +50,7 @@ DSH_HOME=~/.dsh-dev pnpm dsh plugin --profile web add \
 - 装完核对 `~/.dsh-dev/profiles/web/node_modules/dsh-sudoku/lib` 真实存在。
 - **重打包必须升版本号**（同版本 pnpm 按 integrity 判「已最新」，不重解压 → 缺 `lib/` 启动即 `ERR_MODULE_NOT_FOUND`）。
 - 重启 3082 **需用户同意**；`bash scripts/install-to-dsh.sh` 为一键封装（构建→冒烟→移除旧安装→装入 profile→安装后验证，**不自动重启**）。
-- 刷新 `http://127.0.0.1:3082` → 会话内展开右侧栏 → 点「🧩 数独」标签。windows-lite 用同一 tgz 流程，启动为手动（无 systemd）。
+- 刷新 `http://127.0.0.1:3082` → 会话内展开右侧栏 → 点「🧩 数独」标签。windows-lite 用同一 tgz 流程，装完退出重开桌面应用。
 
 ## 构建与验证
 
@@ -72,7 +72,7 @@ node test/ui-verify.mjs 3084 <token>   # headless UI 验证（需 3084 临时实
 | 环境 | 支持度 | 验证状态 |
 |---|---|---|
 | `ubuntu-4090`（源码树 + systemd 3082，验证走 3084 临时实例） | 全量 | `pnpm check` 全绿；3084 临时实例实测通过（后续布局/窄容器改动后的实机复测**未记录 → 未验证**） |
-| `windows-lite`（源码树 + `dsh-dev` 手动启动，无 systemd） | 全量 | 同一 tgz 流程；**未验证** |
+| `windows-lite`（官方桌面版 profile `desktop`，无 systemd） | 全量 | 同一 tgz 流程；**未验证** |
 
 - 双环境一致性来自「零环境依赖」：host 侧为空壳（`inject=[]`、`apply` 无操作），游戏逻辑全在浏览器执行，成绩存 `localStorage`——不触碰 MySQL/SQLite、Python/venv、本地模型服务。
 - 构建脚本跨平台（`scripts/paths.mjs` / `paths.sh` 统一解析路径，动态导入走文件 URL，类型检查经当前 Node 执行，支持 Windows 盘符）。
