@@ -50,7 +50,7 @@ DSH_HOME=~/.dsh-dev pnpm dsh plugin --profile web add \
 - 装完核对 `~/.dsh-dev/profiles/web/node_modules/dsh-sudoku/lib` 真实存在。
 - **重打包必须升版本号**（同版本 pnpm 按 integrity 判「已最新」，不重解压 → 缺 `lib/` 启动即 `ERR_MODULE_NOT_FOUND`）。
 - 重启 3082 **需用户同意**；`bash scripts/install-to-dsh.sh` 为一键封装（构建→冒烟→移除旧安装→装入 profile→安装后验证，**不自动重启**）。
-- 刷新 `http://127.0.0.1:3082` → 会话内展开右侧栏 → 点「🧩 数独」标签。windows-lite 用同一 tgz 流程，装完退出重开桌面应用。
+- 刷新 `http://127.0.0.1:3082` → 会话内展开右侧栏 → 点「🧩 数独」标签。windows-lite 用同一 tgz 流程，装完托盘退出后重开桌面应用。
 
 ## 构建与验证
 
