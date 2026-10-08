@@ -8,8 +8,8 @@
 > 分支 `main`（集成）/ `ubuntu`（agent 开发）/ `windows`（用户）。
 > 安装纪律：**tgz**——`npm pack` → `dsh-dev plugin --profile web add <tgz>`，装后重启 3082 再刷新页面；
 > 重打包必须升版本号（同版本重打包 pnpm 按 integrity 判定「已最新」不重解压）。
-> 各版本逐条变更见 [`../CHANGELOG.md`](../CHANGELOG.md)；需求原话见 [`00-request/request.md`](./00-request/request.md)；
-> 需求→实现→验收映射见 [`REQUIREMENTS.md`](./REQUIREMENTS.md)；踩坑见 [`TROUBLESHOOTING.md`](./TROUBLESHOOTING.md)。
+> 各版本逐条变更见 [`../CHANGELOG.md`](../../CHANGELOG.md)；需求原话见 [`00-request/request.md`](../需求/BRD-目标锚定-request.md)；
+> 需求→实现→验收映射见 [`REQUIREMENTS.md`](../需求/BRD-业务需求说明书.md)；踩坑见 [`TROUBLESHOOTING.md`](RMP-风险管理.md)。
 
 ## 交付与验证证据
 
@@ -21,7 +21,7 @@
 | 客户端（entry/ui/css）+ 冒烟 23 项 | ✅ 23/23 | `node test/smoke-test.mjs` |
 | 3084 临时实例真实验证（v0.1.2 复验） | ✅ | 简介默认折叠 / 全屏开关 /「▶ 开始」前锁定+开始后 ⏱ 计时 / 四侧键各 9 / 成绩行无 `<b>` 乱码 / 方向高亮 8/8/8（`docs/screenshots/` 12 张） |
 | v0.1.3 跨平台构建（Windows / Ubuntu 同一份源码） | ✅ | 新增 `scripts/paths.mjs`/`paths.sh`；动态导入与预载参数改文件 URL；tsc 经当前 Node 启动；双 tsconfig 类型检查 0 错误；门禁全过；79 单测 + 23 冒烟全绿 |
-| v0.1.4（页面布局 / 窄容器适配 / 键盘焦点） | 📄 已发布，**本轮未记录实测证据** | 范围见 [`specs/20260925-experience/spec.md`](./specs/20260925-experience/spec.md) 与 CHANGELOG 0.1.4 条 |
+| v0.1.4（页面布局 / 窄容器适配 / 键盘焦点） | 📄 已发布，**本轮未记录实测证据** | 范围见 [`specs/20260925-experience/spec.md`](../需求/BRD-20260925-experience.md) 与 CHANGELOG 0.1.4 条 |
 | 3082 主力环境 | ✅ v0.1.3 已安装（2026-09-24 记录，用户自行重启后试用）；**v0.1.4 是否已装入未验证** | — |
 | 根 `progress.md` 索引 | ✅ 已更新 | — |
 
@@ -48,7 +48,7 @@ node test/smoke-test.mjs        # 产物冒烟 23 项
 
 - 3084 实例：主 harness checkout 启动，`DSH_HOME=<插件目录>/test-home`（插件目录内，随插件走）。
 - test-home 是**全新 home**：welcome 步每次新浏览器档都要点一次；工作区需手工播种
-  `test-home/storages/workspace.json`（首次播种后实例需重启；细节见 [`TROUBLESHOOTING.md`](./TROUBLESHOOTING.md)）。
+  `test-home/storages/workspace.json`（首次播种后实例需重启；细节见 [`TROUBLESHOOTING.md`](RMP-风险管理.md)）。
 - 测完即关：kill 3084 后台任务；test-home 保留（下次复验免重建）。
 - 红线：**不碰 3082 主力环境**，装 3082 须用户显式同意。
 
