@@ -1,6 +1,6 @@
 # AGENTS.md — dsh-sudoku
 
-本插件的工程纪律（工作区级约定见 `../../AGENTS.md` 与 `../../PLUGIN-DEV-STANDARD.md`，此处只列本插件特有项）。
+本插件的工程纪律（工作区级约定见 `../../AGENTS.md` 与 `../../docs/管理/CMP-插件开发规范.md`，此处只列本插件特有项）。
 
 ## 红线
 
@@ -19,8 +19,10 @@
 8. **版本五处同步**：`package.json.version` == `src/index.ts VERSION` == `scripts/build.mjs` 门禁断言
    == README/CHANGELOG == `src/client/ui.ts` 版本徽章字面量（`dsh-sudoku v0.x.y`）。
    **sed 批量升版必须包含 `ui.ts` 的徽章字面量**（minesweeper v0.4 教训）。
+   构建门禁另核 `src/client/entry.ts` 的 `pluginExports.VERSION`（v0.1.3 补上，此前无人校验）。
    自查：`grep -rn "v0\." README.md docs CHANGELOG.md src lib package.json`。
-   同版本重复打包不会刷新 pnpm 安装（integrity 判定「已最新」）——开发期一律源码 link 安装。
+   同版本重复打包不会刷新 pnpm 安装（integrity 判定「已最新」）——换包必须升版本号，
+   并按现行纪律走 **tgz**（`npm pack` → `add <tgz>`，见 README 安装节）。
 
 ## 常用命令
 
@@ -28,7 +30,7 @@
 node scripts/build.mjs            # 构建 + 门禁 + 双端 typecheck
 node test/engine-test.mjs         # 引擎单测（生成/唯一解/玩法/确定性回放）
 node test/smoke-test.mjs          # 产物冒烟
-bash scripts/install-to-dsh.sh    # 3082 link 安装（构建→冒烟→rm 旧→add→验证；不重启）
+bash scripts/install-to-dsh.sh    # 3082 一键装（脚本当前走源码 link；现行纪律为 tgz，见 README 安装节；不重启）
 ```
 
 ## 布局约定

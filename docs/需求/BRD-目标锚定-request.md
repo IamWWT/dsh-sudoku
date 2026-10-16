@@ -40,7 +40,7 @@
 | A2 | 专家档 22 提示已属高难（17 为数学下限附近）；不做 17–20 的超难档 | v0.2 可加档 |
 | A3 | 唯一解判定用 `countUpTo(2)`（第 2 个解即停），非全量计数 | 生成更快；唯一解性质由「≥2 即回滚」保证 |
 | A4 | 3084 临时实例 home 放插件目录内（`test-home/`），与 dsh-test-home/report-studio-test-home 同级惯例 | 测完保留，随插件目录走 |
-| A5 | 全新 test-home 的 onboarding（欢迎语/API key/工作区）由脚本点穿 + 手工播种工作区 registry 绕过（见 TROUBLESHOOTING §3） | 仅影响自动化，不影响 3082 真实用户路径 |
+| A5 | 全新 test-home 的 onboarding（欢迎语/API key/工作区）由脚本点穿 + 手工播种工作区 registry 绕过（见 [../管理/RMP-风险管理.md](../管理/RMP-风险管理.md) §A.2） | 仅影响自动化，不影响 3082 真实用户路径 |
 | A6 | host v0.1 空壳（`inject=[]`）：成绩只在浏览器本地 | 换浏览器/清缓存丢成绩；v0.2 落 host 文件 |
 
 ## 中途需求变更（2026-09-14，v0.1.1）
@@ -49,7 +49,7 @@
 
 > 「同时要有玩法简单介绍页面, 用户友好页面, 我看你截图的上面三个模式, 中最好设置为下拉模式, 要不然用户不知道自己现状什么模式处于. 另外, 横竖如在点击后有效果更新, 希望不同方向的效果还是有所差异, 且颜色最好有但是不要太刺激」
 
-拆解为 v0.1.1 三项（登记后实施，见 tasks T11–T13）：
+拆解为 v0.1.1 三项（登记后实施，见 [../管理/PP-001-sudoku-任务.md](../管理/PP-001-sudoku-任务.md) T11–T13）：
 
 | # | 变更 | 实现口径 |
 |---|------|------|
@@ -79,4 +79,4 @@
 - 3082 安装 = 用户显式同意后的 **tgz 安装**（`npm pack` → `dsh-dev plugin --profile web add <tgz>`；
   重打包必须升版本号）+ 用户自行 `systemctl --user restart dsh-dev-web`。
 - 双环境（`ubuntu-4090` / `windows-lite`）支持度见 README「环境支持矩阵」与
-  `../../docs/ENV-COMPATIBILITY.md` §3。
+  `dsh-plugins/docs/管理/CMP-环境兼容规范.md`。

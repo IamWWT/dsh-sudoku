@@ -1,6 +1,6 @@
 ## 0.1.4 — 2026-09-25
 
-改进插件页面布局、窄容器适配与键盘焦点；具体范围和验证见 docs/specs/20260925-experience/。
+改进插件页面布局、窄容器适配与键盘焦点；具体范围和验证见 docs/需求/BRD-20260925-experience.md。
 
 # Changelog — dsh-sudoku
 
@@ -65,7 +65,7 @@
 - 客户端 `src/client/`（`__ModuleLoader__` 注册，guide order=42，keyed slot `sidebar.right.pane.tab`）。
 - 构建门禁：产物断言 + 双端 typecheck + 无第二份 React + 无 6 位 hex + 版本五处同步。
 - 验收：构建/单测/冒烟全绿；3084 临时实例真实加载（`#sdk-style` 注入、0 相关 console 错误）、
-  右侧栏「数独」入口可见、棋盘 81 格渲染、填格/笔记/撤销/提示/新游戏/切难度交互链路 headless 走通（`docs/screenshots/`）。
+  右侧栏「数独」入口可见、棋盘 81 格渲染、填格/笔记/撤销/提示/新游戏/切难度交互链路 headless 走通（`docs/测试/截图/`）。
 - host 侧 v0.1 为空壳（`inject=[]`）；成绩文件持久化、全屏模式 → v0.2。
 
 > 3082 主力环境 link 安装待用户确认（`bash scripts/install-to-dsh.sh` 后用户自行 `systemctl --user restart dsh-dev-web`）。

@@ -11,10 +11,10 @@ date: 2026-10-08
 
 > 把业务意图转化为可落地的需求（BRD 业务需求说明书 / TSP 技术方案建议书 / FPE 估算 / RVW 评审）
 
-上级入口：[[../README|docs 总览]] ｜ 全局导航：[[../FILE_INDEX|FILE_INDEX]]
+上级入口：[[README|docs 总览]] ｜ 全局导航：[[FILE_INDEX|FILE_INDEX]]
 
 ## 本段交付物
 
 | 前缀 | 交付物 | 文件 |
 |---|---|---|
-| `BRD-` | 业务需求说明书 | [[BRD-001-sudoku|BRD-001-sudoku]]、[[BRD-20260925-experience|BRD-20260925-experience]]、[[BRD-业务需求说明书|BRD-业务需求说明书]]、[[BRD-目标锚定-request|BRD-目标锚定-request]] |
+| `BRD-` | 业务需求说明书 | [[需求/BRD-001-sudoku|BRD-001-sudoku]]、[[需求/BRD-20260925-experience|BRD-20260925-experience]]、[[需求/BRD-业务需求说明书|BRD-业务需求说明书]]、[[需求/BRD-目标锚定-request|BRD-目标锚定-request]] |

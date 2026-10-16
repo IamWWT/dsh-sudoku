@@ -49,7 +49,8 @@ DSH_HOME=~/.dsh-dev pnpm dsh plugin --profile web add \
 
 - 装完核对 `~/.dsh-dev/profiles/web/node_modules/dsh-sudoku/lib` 真实存在。
 - **重打包必须升版本号**（同版本 pnpm 按 integrity 判「已最新」，不重解压 → 缺 `lib/` 启动即 `ERR_MODULE_NOT_FOUND`）。
-- 重启 3082 **需用户同意**；`bash scripts/install-to-dsh.sh` 为一键封装（构建→冒烟→移除旧安装→装入 profile→安装后验证，**不自动重启**）。
+- 重启 3082 **需用户同意**（`systemctl --user restart dsh-dev-web`）。
+- `bash scripts/install-to-dsh.sh` 是「构建→冒烟→移除旧装→装入 profile→安装后验证」的一键封装，**不自动重启**；但该脚本目前仍按**源码目录 link** 装入（脚本内 `plugin add <插件目录>`），与上面的 tgz 纪律不一致（待改脚本）。要按纪律安装请走上面的 `npm pack` + `add <tgz>`。
 - 刷新 `http://127.0.0.1:3082` → 会话内展开右侧栏 → 点「🧩 数独」标签。windows-lite 用同一 tgz 流程，装完托盘退出后重开桌面应用。
 
 ## 构建与验证
@@ -81,13 +82,17 @@ node test/ui-verify.mjs 3084 <token>   # headless UI 验证（需 3084 临时实
 
 | 文件 | 一句话 |
 |---|---|
-| [docs/需求/BRD-目标锚定-request.md](docs/需求/BRD-目标锚定-request.md) | Phase 0 目标锚定 + 假设表（澄清算定） |
-| [`docs/需求/BRD-业务需求说明书.md`](`docs/需求/BRD-业务需求说明书.md`) | spec 001 的「需求→实现→验收」映射 |
-| [`docs/管理/PP-项目计划.md`](`docs/管理/PP-项目计划.md`) | 进度真源（当前状态 / 下一步 / 待确认） |
-| [`docs/管理/RMP-风险管理.md`](`docs/管理/RMP-风险管理.md`) | 现象→根因→修复（含 3084 临时实例 onboarding/工作区播种经验） |
-| `docs/需求/` + `docs/管理/` 下同 id 文件 | SDD 三件套：决策 D1–D8 + 验收 A1–A9 |
-| `docs/需求/` + `docs/管理/` 下同 id 文件 | 布局/窄容器适配与键盘焦点优化规格 |
-| `docs/screenshots/` | 3084 临时实例 UI 验证截图 |
+| [docs/需求/BRD-目标锚定-request.md](docs/需求/BRD-目标锚定-request.md) | Phase 0 目标锚定 + 假设表 + C1–C10 中途变更原话 |
+| [docs/需求/BRD-001-sudoku.md](docs/需求/BRD-001-sudoku.md) | spec 001：决策 D1–D9 + 引擎设计 + 验收 A1–A16 |
+| [docs/需求/BRD-业务需求说明书.md](docs/需求/BRD-业务需求说明书.md) | spec 001 的「需求→实现→验收」映射（R1–R21 / A1–A18） |
+| [docs/管理/PP-项目计划.md](docs/管理/PP-项目计划.md) | 进度真源（当前状态 / 待办 / 决策快照） |
+| [docs/管理/PP-001-sudoku-任务.md](docs/管理/PP-001-sudoku-任务.md) | spec 001 的 T1–T20 任务与验证留痕 |
+| [docs/管理/RMP-风险管理.md](docs/管理/RMP-风险管理.md) | 现象→根因→修复（含 3084 临时实例 onboarding/工作区播种经验） |
+| [docs/需求/BRD-20260925-experience.md](docs/需求/BRD-20260925-experience.md) | v0.1.4 布局 / 窄容器适配与键盘焦点优化范围 |
+| [docs/管理/PP-20260925-experience-计划.md](docs/管理/PP-20260925-experience-计划.md)、[任务](docs/管理/PP-20260925-experience-任务.md) | 同上的实施方案与任务清单 |
+| [docs/测试/截图/](docs/测试/截图/) | 3084 临时实例 UI 验证截图 |
+| [docs/FILE_INDEX.md](docs/FILE_INDEX.md) | 全插件文档导航 |
+| [docs/history/归档-20261013.md](docs/history/归档-20261013.md) | 2026-10-13 对齐审计中被清理的过期叙述（历史证据，非现行手册） |
 | [AGENTS.md](AGENTS.md) | 本插件工程纪律（红线、命令、版本同步规则） |
 | [CHANGELOG.md](CHANGELOG.md) | 版本变更记录 |
 
